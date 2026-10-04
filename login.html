@@ -58,25 +58,28 @@
     <script>
       document.getElementById('login-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        const email = document.getElementById('email').value;
+
+        const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value;
 
         try {
-          // Demo authentication
-          const user = localStorage.getItem('user');
-          if (user) {
-            const userData = JSON.parse(user);
-            if (userData.email === email && password.length >= 8) {
-              localStorage.setItem('auth_token', 'demo_token_' + Date.now());
-              alert('Logged in successfully!');
-              window.location.href = 'dashboard.html';
-            } else {
-              alert('Invalid credentials. Try signing up first!');
-            }
-          } else {
-            alert('No account found. Please sign up first!');
+          const response = await fetch('http://localhost:4000/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.message || 'Login failed');
           }
+
+          localStorage.setItem('authToken', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+
+          alert('Logged in successfully!');
+          window.location.href = 'dashboard.html';
         } catch (error) {
           alert('Login error: ' + error.message);
         }
