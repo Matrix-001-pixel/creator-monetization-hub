@@ -1,10 +1,9 @@
+const API_BASE = 'https://creator-monetization-hub-2.onrender.com/api';
 const token = localStorage.getItem('authToken');
 
 if (!token) {
   window.location.href = 'login.html';
 }
-
-const API_BASE = 'http://localhost:4000/api';
 
 document.getElementById('launch-monetization')?.addEventListener('click', () => {
   const offers = document.getElementById('offers');
