@@ -73,24 +73,30 @@
     <script>
       document.getElementById('signup-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        const formData = {
-          email: document.getElementById('email').value,
-          displayName: document.getElementById('display-name').value,
-          businessName: document.getElementById('business-name').value,
+
+        const payload = {
+          email: document.getElementById('email').value.trim(),
+          displayName: document.getElementById('display-name').value.trim(),
+          businessName: document.getElementById('business-name').value.trim(),
           password: document.getElementById('password').value,
           isCreator: document.getElementById('is-creator').checked
         };
 
         try {
-          // Store credentials locally for demo
-          localStorage.setItem('user', JSON.stringify({
-            email: formData.email,
-            displayName: formData.displayName,
-            businessName: formData.businessName,
-            isCreator: formData.isCreator,
-            createdAt: new Date().toISOString()
-          }));
+          const response = await fetch('http://localhost:4000/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.message || 'Registration failed');
+          }
+
+          localStorage.setItem('authToken', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
 
           alert('Account created! Redirecting to dashboard...');
           window.location.href = 'dashboard.html';
