@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up | Matrix Créations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="auth.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <img src="assets/matrix-logo.svg" alt="Matrix Créations" class="auth-logo" />
+          <h1>Create your creator account</h1>
+          <p>Join 78K+ creators monetizing their audience</p>
+        </div>
+
+        <form id="signup-form" class="auth-form">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="display-name">Display name</label>
+            <input type="text" id="display-name" name="display-name" placeholder="Your name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="business-name">Business name (optional)</label>
+            <input type="text" id="business-name" name="business-name" placeholder="e.g., Nina Explores" />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="At least 8 characters" required />
+          </div>
+
+          <div class="form-group checkbox">
+            <input type="checkbox" id="is-creator" name="is-creator" checked />
+            <label for="is-creator">I'm a creator with 1,000+ followers</label>
+          </div>
+
+          <button type="submit" class="btn-submit">Create account</button>
+        </form>
+
+        <div class="auth-footer">
+          <p>Already have an account? <a href="login.html">Log in here</a></p>
+        </div>
+      </div>
+
+      <div class="auth-side">
+        <div class="side-content">
+          <span class="eyebrow">Ready to monetize?</span>
+          <h2>Creators are earning an average of 4.8x more revenue with Matrix Créations</h2>
+          <ul class="benefits">
+            <li>✓ Multiple monetization streams</li>
+            <li>✓ Transparent 10% commission</li>
+            <li>✓ Quick payout settlements</li>
+            <li>✓ Brand partnership deals</li>
+            <li>✓ Affiliate management tools</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('signup-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = {
+          email: document.getElementById('email').value,
+          displayName: document.getElementById('display-name').value,
+          businessName: document.getElementById('business-name').value,
+          password: document.getElementById('password').value,
+          isCreator: document.getElementById('is-creator').checked
+        };
+
+        try {
+          // Store credentials locally for demo
+          localStorage.setItem('user', JSON.stringify({
+            email: formData.email,
+            displayName: formData.displayName,
+            businessName: formData.businessName,
+            isCreator: formData.isCreator,
+            createdAt: new Date().toISOString()
+          }));
+
+          alert('Account created! Redirecting to dashboard...');
+          window.location.href = 'dashboard.html';
+        } catch (error) {
+          alert('Error creating account: ' + error.message);
+        }
+      });
+    </script>
+  </body>
+</html>
