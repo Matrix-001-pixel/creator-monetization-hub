@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "Backend API for Matrix Créations creator monetization platform.",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "db:init": "node -e \"import('./server.js').then(() => console.log('database initialized'))\""
+    "db:init": "node -e \"require('./server.js'); console.log('database initialized')\""
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
