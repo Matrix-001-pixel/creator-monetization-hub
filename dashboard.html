@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrix Créations Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <img src="assets/matrix-logo.svg" alt="Matrix Créations" />
+        </div>
+
+        <nav class="sidebar-nav">
+          <a class="active" href="#overview">Overview</a>
+          <a href="#verification">Verification</a>
+          <a href="#offers">Offers</a>
+          <a href="#payments">Payments</a>
+          <a href="#analytics">Analytics</a>
+        </nav>
+
+        <div class="sidebar-card">
+          <span class="eyebrow">Profile status</span>
+          <strong>Verified creator</strong>
+          <p>1,345 followers across 3 connected platforms</p>
+        </div>
+      </aside>
+
+      <main class="dashboard-main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow small">Creator dashboard</p>
+            <h1>Welcome back, Nina</h1>
+          </div>
+          <button class="btn-primary">Launch monetization</button>
+        </header>
+
+        <section id="overview" class="stats-grid">
+          <article class="stat-card accent">
+            <span>Monthly revenue</span>
+            <strong>$18,420</strong>
+            <small>+12.4% from last month</small>
+          </article>
+          <article class="stat-card">
+            <span>Live offers</span>
+            <strong>24</strong>
+            <small>8 new this week</small>
+          </article>
+          <article class="stat-card">
+            <span>Affiliate sales</span>
+            <strong>423</strong>
+            <small>82% conversion rate</small>
+          </article>
+          <article class="stat-card">
+            <span>Pending payouts</span>
+            <strong>$3,220</strong>
+            <small>Stripe processing</small>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <div class="panel large" id="verification">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow small">Verification</span>
+                <h2>Connect your social accounts</h2>
+              </div>
+              <span class="status status-ok">Eligible</span>
+            </div>
+
+            <form class="link-form">
+              <div class="field-row">
+                <label>
+                  Platform
+                  <select>
+                    <option>TikTok</option>
+                    <option>YouTube</option>
+                    <option>Instagram</option>
+                    <option>Twitch</option>
+                  </select>
+                </label>
+                <label>
+                  Username
+                  <input type="text" value="@ninaexplores" />
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label>
+                  Follower count
+                  <input type="number" value="1345" />
+                </label>
+                <label>
+                  Profile URL
+                  <input type="url" value="https://instagram.com/ninaexplores" />
+                </label>
+              </div>
+
+              <button type="button" class="btn-primary full">Connect account</button>
+            </form>
+
+            <div class="connected-list">
+              <div class="connected-item">
+                <div>
+                  <strong>Instagram</strong>
+                  <small>@ninaexplores</small>
+                </div>
+                <span>1,200 followers</span>
+              </div>
+              <div class="connected-item">
+                <div>
+                  <strong>TikTok</strong>
+                  <small>@ninaexplores</small>
+                </div>
+                <span>145 followers</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" id="analytics">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow small">Revenue</span>
+                <h2>Cash flow</h2>
+              </div>
+            </div>
+
+            <div class="chart-bars">
+              <span style="height: 20%"></span>
+              <span style="height: 32%"></span>
+              <span style="height: 28%"></span>
+              <span style="height: 55%"></span>
+              <span style="height: 68%"></span>
+              <span style="height: 60%"></span>
+              <span style="height: 88%"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="bottom-grid">
+          <div class="panel" id="offers">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow small">Offers</span>
+                <h2>Available deals</h2>
+              </div>
+            </div>
+
+            <div class="offer-list">
+              <article class="offer-item">
+                <div>
+                  <span class="offer-tag sponsorship">Brand deal</span>
+                  <h3>Luxury Beauty Collab</h3>
+                </div>
+                <div class="offer-meta">
+                  <strong>$2,400</strong>
+                  <button class="btn-secondary">Accept</button>
+                </div>
+              </article>
+
+              <article class="offer-item">
+                <div>
+                  <span class="offer-tag affiliate">Affiliate</span>
+                  <h3>Travel Essentials Kit</h3>
+                </div>
+                <div class="offer-meta">
+                  <strong>$860</strong>
+                  <button class="btn-secondary">Accept</button>
+                </div>
+              </article>
+
+              <article class="offer-item">
+                <div>
+                  <span class="offer-tag subscription">Subscription</span>
+                  <h3>Members-Only Content</h3>
+                </div>
+                <div class="offer-meta">
+                  <strong>$1,200</strong>
+                  <button class="btn-secondary">Accept</button>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="panel" id="payments">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow small">Payments</span>
+                <h2>Payout status</h2>
+              </div>
+            </div>
+
+            <div class="payment-summary">
+              <div>
+                <span>Platform fee</span>
+                <strong>$1,750</strong>
+              </div>
+              <div>
+                <span>Creator payout</span>
+                <strong>$15,670</strong>
+              </div>
+            </div>
+
+            <ul class="payment-list">
+              <li>
+                <span>Brand partnership</span>
+                <strong>$2,400</strong>
+              </li>
+              <li>
+                <span>Affiliate sale</span>
+                <strong>$860</strong>
+              </li>
+              <li>
+                <span>Tip bundle</span>
+                <strong>$1,540</strong>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
