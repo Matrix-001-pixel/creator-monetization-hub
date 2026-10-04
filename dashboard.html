@@ -37,7 +37,7 @@
             <p class="eyebrow small">Creator dashboard</p>
             <h1>Welcome back, Nina</h1>
           </div>
-          <button class="btn-primary">Launch monetization</button>
+          <button class="btn-primary" id="launch-monetization">Launch monetization</button>
         </header>
 
         <section id="overview" class="stats-grid">
@@ -86,39 +86,26 @@
                 </label>
                 <label>
                   Username
-                  <input type="text" value="@ninaexplores" />
+                  <input type="text" placeholder="@yourname" />
                 </label>
               </div>
 
               <div class="field-row">
                 <label>
                   Follower count
-                  <input type="number" value="1345" />
+                  <input type="number" placeholder="0" min="0" />
                 </label>
                 <label>
                   Profile URL
-                  <input type="url" value="https://instagram.com/ninaexplores" />
+                  <input type="url" placeholder="https://..." />
                 </label>
               </div>
 
-              <button type="button" class="btn-primary full">Connect account</button>
+              <button type="button" class="btn-primary full" id="connect-account-btn">Connect account</button>
             </form>
 
             <div class="connected-list">
-              <div class="connected-item">
-                <div>
-                  <strong>Instagram</strong>
-                  <small>@ninaexplores</small>
-                </div>
-                <span>1,200 followers</span>
-              </div>
-              <div class="connected-item">
-                <div>
-                  <strong>TikTok</strong>
-                  <small>@ninaexplores</small>
-                </div>
-                <span>145 followers</span>
-              </div>
+              <!-- Populated by JS -->
             </div>
           </div>
 
@@ -224,5 +211,7 @@
         </section>
       </main>
     </div>
+
+    <script src="dashboard.js"></script>
   </body>
 </html>
