@@ -16,7 +16,6 @@ const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || '';
 const stripe = STRIPE_SECRET_KEY ? new Stripe(STRIPE_SECRET_KEY) : null;
 
 fs.mkdirSync(path.dirname(DATABASE_PATH), { recursive: true });
-
 const db = new Database(DATABASE_PATH);
 
 function initDb() {
@@ -93,10 +92,13 @@ function initDb() {
 initDb();
 
 app.use(cors({
-  origin: true,
+  origin: ['https://creator-monetization-hub-lemon.vercel.app', 'http://localhost:3000', 'http://localhost:4173', 'http://127.0.0.1:3000'],
   credentials: true,
 }));
-app.options('*', cors({ origin: true, credentials: true }));
+app.options('*', cors({
+  origin: ['https://creator-monetization-hub-lemon.vercel.app', 'http://localhost:3000', 'http://localhost:4173', 'http://127.0.0.1:3000'],
+  credentials: true,
+}));
 app.use(express.json({ limit: '2mb' }));
 
 function issueToken(user) {
@@ -216,7 +218,6 @@ app.post('/api/social/connect', authMiddleware, (req, res) => {
 
   insert.run(req.user.id, platform, username, url || '', Number(followerCount || 0));
 
-  const user = db.prepare('SELECT * FROM users WHERE id = ?').get(req.user.id);
   const followerTotal = db.prepare(`
     SELECT COALESCE(SUM(follower_count), 0) AS total
     FROM social_accounts
